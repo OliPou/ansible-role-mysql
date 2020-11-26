@@ -18,8 +18,8 @@
     mode: getslave
     login_user: "{{ mysql_replication_user.name }}"
     login_password: "{{ mysql_replication_user.password }}"
-    login_unix_socket: "{{ mysql_socket }}"
   ignore_errors: true
+  delegate_to: "{{ mysql_replication_master }}"
   register: slave
   when:
     - mysql_replication_role == 'slave'
